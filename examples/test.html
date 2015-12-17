@@ -1,0 +1,33 @@
+<html lang='en'>
+  <head>
+    <title>Nyaplotjs example -- Line chart</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.js"></script>
+  </head>
+  <body>
+    <div id='vis'></div>
+    <script>
+     
+     var data1 = [], MAX=10, MIN=0;
+     for(var x=MIN;x<MAX;x+=0.1)data1.push({x: x, y1: Math.sin(x), y2: Math.cos(x)});
+     models = {data:{data1: data1},panes: [{type:'rectangular', diagrams:[{type: 'line', data: 'data1', options: {x:'x', y:'y1', stroke_width:2, title:'sin(x)'}},{type: 'line', data: 'data1', options: {x:'x', y:'y2', stroke_width:2, color:'#000000', title:'cos(x)'}}],options:{width:700, height:500, xrange: [MIN, MAX], yrange: [-2, 2], legend:true}}]};
+     window.onload = function(){
+       require.config({
+         paths: {
+           d3: 'https://d3js.org/d3.v3.min',
+           Nyaplot: 'https://rawgit.com/domitry/Nyaplotjs/master/release/nyaplot',
+           svg2png: 'https://rawgit.com/domitry/0e51c0987efbb26a1a31/raw/123be2f7bb2e057b60f29f9e6b7e38b177d04613/hoge'
+         }
+       });
+       require(["svg2png", "d3", "Nyaplot"], function(util){
+         Nyaplot.core.parse(models, '#vis');
+         util.svg2uri(d3.select("svg"))
+             .then(function(uri){
+               d3.select('#vis')
+                 .append("img")
+                 .attr("src", uri);
+             });
+       });
+     };
+    </script>
+  </body>
+</html>

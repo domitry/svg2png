@@ -1,0 +1,24 @@
+{
+  "name": "svg2png",
+  "version": "0.0.0",
+  "description": "Encode svg to png",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domitry/svg2png.git"
+  },
+  "keywords": [
+    "visualization"
+  ],
+  "author": "Naoki Nishida",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/domitry/svg2png/issues"
+  }
+}
